@@ -1,4 +1,4 @@
-# CRYPTO DASH
+# Crypto Dash
 #### Video Demo:  <https://www.youtube.com/watch?v=x6z0yFUXQig>
 
 ## Getting Started
@@ -33,7 +33,7 @@ Thanks for reading all that and I hope I made enough sense!
 
 ## Deployment
 
-Use herokuapp or github pages.
+I found out that only static pages can be deployed in github pages. I am eploring other options, such as Heroku, to create a live demo of this website.
 
 ## Built With
 
