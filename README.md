@@ -42,10 +42,6 @@ I found out that only static pages can be deployed in github pages. I am eplorin
 * [CoinMarketCap API](https://coinmarketcap.com/api/) - Used to generate price widgets
 
 
-## Author
-
-* **Inno Paolo Burgos de Leoz** - [innopaolo](https://github.com/innopaolo)
-
 ## Acknowledgments
 
 * Thank you to the CS50 Finance problem set for the login and database help
