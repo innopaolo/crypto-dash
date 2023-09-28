@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Remove
+{% endblock %}
+
+{% block main %}
+
+    <form action="/remove" method="post">
+    {% for row in pf %}
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="checkbox" value="{{ row.symbol }}" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            {{ row.symbol }}
+            </label>
+        </div>
+    {% endfor %}
+    <button class="btn btn-primary removebtn" type="submit">Remove</button>
+    </form>
+
+{% endblock %}

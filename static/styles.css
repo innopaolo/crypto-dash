@@ -1,0 +1,96 @@
+body
+{
+    background-color: black;
+}
+
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xxx-large;
+}
+
+/* widget */
+.coinmarketcap-currency-widget {
+    margin-bottom: 20px;
+    font-family: 'Circular Book', sans-serif;
+    color: white;
+    background-color: #212529;
+    border-radius: 10px;
+}
+
+/* Make text in account page visible */
+h4 {
+    font-family: 'YoungSerifRegular';
+    color: white;
+}
+
+/* Login page intro text properties */
+.intro {
+    font-family: 'YoungSerifRegular';
+    color: white;
+    letter-spacing: -1px;
+    margin-bottom: 5vw;
+}
+
+
+/* Animation to have intro text fade in */
+h1 div span {
+    font-size: 6vw;
+    opacity: 0;
+    animation: fadeIn 2s ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn  {
+      0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/*  Add coin icon is fixed to the bottom and centered */
+.add-icon {
+    font-family: 'YoungSerifRegular';
+    background-color: #1067cb;
+    border-radius: 55px;
+    bottom: 0;
+    margin-left: 30%;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 15px;
+    color: white;
+    position: fixed;
+}
+
+.add-icon:hover {
+    cursor: pointer;
+    background-color: #3388ff;
+    transition: all 0.2s linear;
+}
+
+.modal {
+    font-family: 'YoungSerifRegular';
+}
+
+form {
+    margin: 20px;
+}
+
+form div button {
+    margin-top: 10px;
+}
+
+/* Checkboxes for removing coins */
+.form-check {
+    background-color: #212529;
+    border-radius: 20px;
+    color: white;
+    width: 50%;
+    font-size: xx-large;
+    font-family: 'YoungSerifRegular';
+}
+
+/* Aligns the remove button to the checkboxes */
+.removebtn {
+    margin-top: 15px;
+    margin-right: 100px;
+    border-radius: 10px;
+}

@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <!--Refreshes the page every 30 seconds-->
+    <meta http-equiv="refresh" content="30">
+{% endblock %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <!-- Scripts to activate coinmarketcap widget -->
+    <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
+
+    {% for row in pf %}
+        <div class="coinmarketcap-currency-widget" data-currencyid="{{ row.coins }}" data-base="USD" data-secondary="" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-statsticker="true" data-stats="USD"></div>
+    {% endfor %}
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary add-icon" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <h4>add coin +</h4>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Choose your ride to the moon</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/add" method="post">
+                <div class="mb-3">
+
+                    <input autocomplete="off" class="form-control" list="datalistOptions" id="symbol" name="symbol" placeholder="Type to search...">
+                    <datalist id="datalistOptions">
+                        <option value="BTC">
+                        <option value="ETH">
+                        <option value="BNB">
+                        <option value="DOGE">
+                        <option value="XRP">
+                        <option value="USDT">
+                        <option value="BUSD">
+                        <option value="ADA">
+                        <option value="LTC">
+                        <option value="XMR">
+                        <option value="MATIC">
+                        <option value="DAI">
+                        <option value="DOT">
+                        <option value="SHIB">
+                        <option value="SOL">
+                        <option value="HEX">
+                        <option value="XLM">
+                        <option value="LINK">
+                        <option value="ATOM">
+                        <option value="APE">
+                    </datalist>
+                    <button class="btn btn-primary" type="submit">Add to dashboard</button>
+
+                </div>
+            </form>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+{% endblock %}

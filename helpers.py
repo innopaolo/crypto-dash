@@ -1,0 +1,108 @@
+import os
+import requests
+import urllib.parse
+
+from flask import redirect, render_template, request, session
+from functools import wraps
+
+from requests import Request, Session
+from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+import json
+
+
+def apology(message, code=400):
+    """Render message as an apology to user."""
+    def escape(s):
+        """
+        Escape special characters.
+
+        https://github.com/jacebrowning/memegen#special-characters
+        """
+        for old, new in [("-", "--"), (" ", "-"), ("_", "__"), ("?", "~q"),
+                         ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
+            s = s.replace(old, new)
+        return s
+    return render_template("apology.html", top=code, bottom=escape(message)), code
+
+
+def login_required(f):
+    """
+    Decorate routes to require login.
+
+    https://flask.palletsprojects.com/en/2.2.x/patterns/viewdecorators/
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if session.get("user_id") is None:
+            return redirect("/login")
+        return f(*args, **kwargs)
+    return decorated_function
+
+
+def lookup(symbol):
+
+    # Contact API
+    url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/map'
+    parameters = {
+    'start':'1',
+    'limit':'5000',
+    'symbol': (symbol)
+    }
+    headers = {
+    'Accepts': 'application/json',
+    'X-CMC_PRO_API_KEY': '885c87e7-835a-4035-831b-8fd9d00db130',
+    }
+
+    session = Session()
+    session.headers.update(headers)
+
+
+    try:
+        response = session.get(url, params=parameters)
+        data = json.loads(response.text)
+
+        # Returns 0 if there is no valid symbol match
+        try:
+            coins = data['data']
+        except:
+            return (0)
+        for x in coins:
+            return (x['symbol'])
+    except (ConnectionError, Timeout, TooManyRedirects) as e:
+        print(e)
+
+
+# Contacts API again to get the coin ID
+# Needs to figure out why I can't return a dictionary without it turning into an int in the first lookup function
+def lookupID(symbol):
+
+    # Contact API
+    url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/map'
+    parameters = {
+    'start':'1',
+    'limit':'5000',
+    'symbol': (symbol)
+    }
+    headers = {
+    'Accepts': 'application/json',
+    'X-CMC_PRO_API_KEY': '885c87e7-835a-4035-831b-8fd9d00db130',
+    }
+
+    session = Session()
+    session.headers.update(headers)
+
+
+    try:
+        response = session.get(url, params=parameters)
+        data = json.loads(response.text)
+
+        # Returns 0 if there is no valid symbol match
+        try:
+            coins = data['data']
+        except:
+            return (0)
+        for x in coins:
+            return (x['id'])
+    except (ConnectionError, Timeout, TooManyRedirects) as e:
+        print(e)
+
